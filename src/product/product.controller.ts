@@ -4,7 +4,7 @@ import { Response } from 'express';
 import { CreateProductDto } from './dto/create-product-dto';
 import { ProductService } from './product.service';
 
-@Controller('product')
+@Controller()
 export class ProductController {
 
     constructor(
