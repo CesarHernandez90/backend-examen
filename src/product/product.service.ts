@@ -15,25 +15,16 @@ export class ProductService {
         return this.productModel.find().exec();
     }
 
-    async crearUnProducto(createProductDto: CreateProductDto) {
+    async crearUnProducto(createProductDto: CreateProductDto) : Promise<Product> {
         const createdProduct = new this.productModel(createProductDto);
-        console.log('si paso aqui');
-        createdProduct.save(function(err, user) {
-            console.log('err', err);
-            console.log('user', user);
-            if(err) {
-                return json(err);
-            } else {
-                return user;
-            }
-        });
+        return createdProduct.save();
     }
 
     editarUnProducto() {
 
     }
 
-    eliminarUnProducto() {
-
+    async eliminarUnProducto(id: number) : Promise<Product> {
+        return this.productModel.findByIdAndDelete(id);
     }
 }
