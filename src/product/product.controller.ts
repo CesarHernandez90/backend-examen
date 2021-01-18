@@ -1,4 +1,16 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Res, UsePipes, ValidationPipe } from '@nestjs/common';
+import { 
+    Body, 
+    Controller, 
+    Delete, 
+    Get, 
+    HttpStatus, 
+    Param, 
+    Post, 
+    Put,
+    Res, 
+    UsePipes, 
+    ValidationPipe 
+} from '@nestjs/common';
 import { Response } from 'express';
 
 import { CreateProductDto } from './dto/create-product-dto';
@@ -19,13 +31,13 @@ export class ProductController {
         return res.status(HttpStatus.OK).json(products);
     }
 
-    @Get('/listarUnProducto/:id')
+    /* @Get('/listarUnProducto/:id')
     listarUnProducto(
         @Res() res: Response,
         @Param('id') id
     ) {
 
-    }
+    } */
 
     @Post('/crearUnProducto')
     @UsePipes(new ValidationPipe())
@@ -34,6 +46,16 @@ export class ProductController {
         @Body() createProductDto: CreateProductDto
     ) {
         const product = await this.productService.crearUnProducto(createProductDto);
+        return res.status(HttpStatus.OK).json(product);
+    }
+
+    @Put('/editarUnProducto/:id')
+    async editarUnProducto(
+        @Res() res: Response,
+        @Param('id') id,
+        @Body() createProductDto: CreateProductDto
+    ) {
+        const product = await this.productService.editarUnProducto(id, createProductDto)
         return res.status(HttpStatus.OK).json(product);
     }
 

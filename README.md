@@ -1,8 +1,11 @@
 ## Preparación
-Crear un archivo .env en la raiz del proyecto y declarar el puerto y las credenciales mongo.
+Crear un archivo .env en la raiz del proyecto y declarar las credenciales mongo que fueron proporcionadas en el documento para el desarrollo de este examen.
+
+- MONGODB_URI=''
+
+Si lo desea puede configurar el puerto que usará el Backend para trabajar. Sin embargo, no olvide modificar dicho puerto en el archívo .env del Frontend
 
 - PORT=5000
-- MONGODB_URI=''
 
 ## Instalación
 Antes de iniciar, se deben instalar las dependencias
@@ -33,6 +36,10 @@ $ npm run start
 - Eliminar un producto: 
 
   - /eliminarUnProducto/{id}
+
+- Editar un producto: 
+
+  - /editarUnProducto/{id}
 
 ## License
 
